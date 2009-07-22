@@ -18,9 +18,9 @@ object Helper {
     temp7.replaceAll("I_WAS_Must_ORIGINALLY", "Should")
   }
   def generateFile(srcFileName: String, targetFileName: String) {
-    val dir = new File("main/must/src/main/scala/org/scalatest/matchers")
+    val dir = new File("main/must_matchers/src/main/scala/org/scalatest/matchers")
     dir.mkdirs()
-    val filename = "main/must/src/main/scala/org/scalatest/matchers/" + targetFileName
+    val filename = "main/must_matchers/src/main/scala/org/scalatest/matchers/" + targetFileName
     println("generating: " + filename)
     val writer = new BufferedWriter(new FileWriter(filename))
     try {
@@ -45,7 +45,7 @@ object GenMustMatchers {
 object GenMustMatchersTests {
 
   def generate() {
-    val dir = new File("main/must/src/test/scala/org/scalatest/matchers")
+    val dir = new File("main/must_matchers/src/test/scala/org/scalatest/matchers")
     dir.mkdirs()
     val shouldFileNames =
     List(
@@ -82,7 +82,7 @@ object GenMustMatchersTests {
     for (shouldFileName <- shouldFileNames) {
 
       val mustFileName = shouldFileName.replace("Should", "Must")
-      val filename = "main/must/src/test/scala/org/scalatest/matchers/" + mustFileName
+      val filename = "main/must_matchers/src/test/scala/org/scalatest/matchers/" + mustFileName
       println("generating: " + filename)
       val writer = new BufferedWriter(new FileWriter(filename))
       try {

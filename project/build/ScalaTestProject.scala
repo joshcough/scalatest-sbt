@@ -4,7 +4,7 @@ class ScalaTestProject(info: ProjectInfo) extends ParentProject(info) {
 
   lazy val main = project("main", "ScalaTest", new Main(_))
   lazy val examples = project("examples", "examples", new Examples(_), main)
-  lazy val must = project("main" / "must", "must", new Must(_), main)
+  lazy val must = project("main" / "must_matchers", "must_matchers", new MustMatchers(_), main)
 
   class ScalaTestParentProject(info: ProjectInfo) extends DefaultProject(info) with AutoCompilerPlugins {
     override def crossScalaVersions = Set("2.7.5")
@@ -44,7 +44,7 @@ class ScalaTestProject(info: ProjectInfo) extends ParentProject(info) {
     override def artifactID = "scalatest-examples"
   }
 
-  class Must(info: ProjectInfo) extends ScalaTestParentProject(info) {
+  class MustMatchers(info: ProjectInfo) extends ScalaTestParentProject(info) {
     lazy val generateSrc = task { GenMustMatchers.generate(); None }
     override def compileAction = super.compileAction dependsOn(generateSrc)
 
