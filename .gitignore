@@ -1,0 +1,6 @@
+*.iws
+target
+out
+project/boot
+main/lib_managed/
+project/build/target/scala_2.7.5/analysis/
